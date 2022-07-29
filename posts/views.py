@@ -7,7 +7,8 @@ from posts.serializers import PostSerializer
 
 class PostViewSet(
     viewsets.GenericViewSet,
-    mixins.ListModelMixin
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
 ):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
