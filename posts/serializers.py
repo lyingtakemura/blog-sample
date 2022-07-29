@@ -15,7 +15,8 @@ class PostSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)
     title = serializers.CharField(max_length=128)
     body = serializers.CharField(max_length=512)
+    created_at = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Post
-        fields = ("user", "title", "body")
+        fields = ("user", "title", "body", "created_at")

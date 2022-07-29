@@ -10,7 +10,7 @@ class PostViewSet(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
 ):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-created_at")
     serializer_class = PostSerializer
     filterset_class = PostFilter
 
