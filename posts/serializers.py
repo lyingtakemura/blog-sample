@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
 
 from posts.models import Category, Post
 
@@ -22,4 +23,3 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ("user", "category", "title", "body", "created_at")
-        depth = 1
