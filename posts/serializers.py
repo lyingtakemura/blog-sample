@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from posts.models import Post
+
+from posts.models import Category, Post
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -13,10 +14,12 @@ class PostSerializer(serializers.ModelSerializer):
     during deserialization.
     '''
     user = serializers.PrimaryKeyRelatedField(read_only=True)
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     title = serializers.CharField(max_length=128)
     body = serializers.CharField(max_length=512)
     created_at = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Post
-        fields = ("user", "title", "body", "created_at")
+        fields = ("user", "category", "title", "body", "created_at")
+        depth = 1
